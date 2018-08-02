@@ -1,0 +1,4 @@
+---
+mysql_community_repo_version: 80
+mysql_community_repo_rpm_url: "https://repo.mysql.com/mysql{{ mysql_community_repo_version }}-community-release-{% if ansible_distribution == 'Fedora' %}fc{% else %}el{% endif %}{{ ansible_distribution_major_version }}.rpm"
+mysql_community_repo_key_url: "https://repo.mysql.com/RPM-GPG-KEY-mysql"
