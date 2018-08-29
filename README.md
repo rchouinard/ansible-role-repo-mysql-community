@@ -6,6 +6,13 @@ This role provides support for the MySQL Community repository.
 
 * Ansible 2.4+
 
+## Role Variables
+
+``` yaml
+# Set true to use 8.0, false for 5.7
+mysql_community_repo_eight: yes
+```
+
 ## Dependencies
 
 None.
