@@ -1,10 +1,32 @@
 ---
 - name: Install packages
+  become: yes
   package:
     name: "{{ mysql_community_repo_rpm_url }}"
     state: present
 
 - name: Import GPG key
+  become: yes
   rpm_key:
     key: "{{ mysql_community_repo_key_url }}"
     state: present
+
+- name: Disable 8.0 repo
+  become: yes
+  ini_file:
+    path: /etc/yum.repos.d/mysql-community.repo
+    section: mysql80-community
+    option: enabled
+    value: '0'
+    no_extra_spaces: yes
+  when: not mysql_community_repo_eight
+
+- name: Enable 5.7 repo
+  become: yes
+  ini_file:
+    path: /etc/yum.repos.d/mysql-community.repo
+    section: mysql57-community
+    option: enabled
+    value: '1'
+    no_extra_spaces: yes
+  when: not mysql_community_repo_eight
