@@ -2,6 +2,7 @@
 galaxy_info:
   author: Ryan Chouinard
   description: MySQL Community Repository
+  role_name: repo-mysql-community
   license: MIT
   min_ansible_version: 2.4
   platforms:

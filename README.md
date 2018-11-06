@@ -9,8 +9,8 @@ This role provides support for the MySQL Community repository.
 ## Role Variables
 
 ``` yaml
-# Set true to use 8.0, false for 5.7
-mysql_community_repo_eight: yes
+# Valid values are "8.0" or "5.7"
+mysql_community_repo_version: "8.0"
 ```
 
 ## Dependencies

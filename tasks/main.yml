@@ -19,7 +19,7 @@
     option: enabled
     value: '0'
     no_extra_spaces: yes
-  when: not mysql_community_repo_eight
+  when: mysql_community_repo_version != "8.0"
 
 - name: Enable 5.7 repo
   become: yes
@@ -29,4 +29,4 @@
     option: enabled
     value: '1'
     no_extra_spaces: yes
-  when: not mysql_community_repo_eight
+  when: mysql_community_repo_version == "5.7"
