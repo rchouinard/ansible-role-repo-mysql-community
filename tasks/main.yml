@@ -1,52 +1,18 @@
 ---
 - name: Install packages
-  become: yes
   package:
     name: "{{ mysql_community_repo_rpm_url }}"
     state: present
 
 - name: Import GPG key
-  become: yes
   rpm_key:
     key: "{{ mysql_community_repo_key_url }}"
     state: present
 
-- name: Disable 8.0 repo
-  become: yes
-  ini_file:
-    path: /etc/yum.repos.d/mysql-community.repo
-    section: mysql80-community
-    option: enabled
-    value: "0"
-    no_extra_spaces: yes
+- name: Enable MySQL Community Server 5.7 repo
+  include_tasks: enable_57.yml
   when: mysql_community_repo_version != "8.0"
 
-- name: Enable 8.0 repo
-  become: yes
-  ini_file:
-    path: /etc/yum.repos.d/mysql-community.repo
-    section: mysql80-community
-    option: enabled
-    value: "1"
-    no_extra_spaces: yes
+- name: Enable MySQL Community Server 8.0 repo
+  include_tasks: enable_80.yml
   when: mysql_community_repo_version == "8.0"
-
-- name: Disable 5.7 repo
-  become: yes
-  ini_file:
-    path: /etc/yum.repos.d/mysql-community.repo
-    section: mysql57-community
-    option: enabled
-    value: "0"
-    no_extra_spaces: yes
-  when: mysql_community_repo_version != "5.7"
-
-- name: Enable 5.7 repo
-  become: yes
-  ini_file:
-    path: /etc/yum.repos.d/mysql-community.repo
-    section: mysql57-community
-    option: enabled
-    value: "1"
-    no_extra_spaces: yes
-  when: mysql_community_repo_version == "5.7"
