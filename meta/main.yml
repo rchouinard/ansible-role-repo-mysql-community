@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Ryan Chouinard
+  author: rchouinard
   description: MySQL Community Repository
   role_name: repo-mysql-community
   license: MIT
