@@ -1,10 +1,10 @@
 # MySQL Community Repo Ansible Role
 
-This role provides support for the MySQL Community repository.
+Installs the MySQL Community repositories for Fedora, RHEL, and its derivitives. 
 
 ## Requirements
 
-* Ansible 2.4+
+* Ansible 2.5+
 
 ## Role Variables
 
